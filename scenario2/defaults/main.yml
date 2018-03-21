@@ -1,0 +1,24 @@
+nxos:
+  - cmd: version
+  - cmd: interface
+  - cmd: ip route
+
+eos:
+  - cmd: version
+  - cmd: interface
+  - cmd: ip route
+
+ios:
+  - cmd: version
+  - cmd: interface
+  - cmd: ip route
+
+vyos:
+  - cmd: version
+  - cmd: interface
+  - cmd: ip route
+
+junos:
+  - cmd: version
+  - cmd: interface
+  - cmd: route

@@ -1,0 +1,11 @@
+- name: load eos_config
+  hosts: veos02
+
+  vars_files:
+    - ./vars/main.yml
+
+  tasks:
+  - name: eos_config
+    eos_config:
+      diff_against: intended
+      intended_config: "{{ lookup('file', './templates/config.j2') }}"

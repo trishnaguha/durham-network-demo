@@ -1,0 +1,39 @@
+- name: nxos_command
+  nxos_command:
+    commands:
+      - "show {{ item.cmd }}"
+  with_items:
+    - "{{ nxos }}"
+  when: ansible_network_os == 'nxos' and ansible_host == "an-nxos-02.ansible.eng.rdu2.redhat.com"
+
+- name: eos_command
+  eos_command:
+    commands:
+      - "show {{ item.cmd }}"
+  with_items:
+    - "{{ eos }}"
+  when: ansible_network_os == 'eos' and ansible_host == "an-veos-02.ansible.eng.rdu2.redhat.com"
+
+- name: ios_command
+  ios_command:
+    commands:
+      - "show {{ item.cmd }}"
+  with_items:
+    - "{{ ios }}"
+  when: ansible_network_os == 'ios' and ansible_host == "an-ios-01.ansible.eng.rdu2.redhat.com"
+
+- name: vyos_command
+  vyos_command:
+    commands:
+      - "show {{ item.cmd }}"
+  with_items:
+    - "{{ vyos }}"
+  when: ansible_network_os == 'vyos' and ansible_host == "an-vyos-01.ansible.eng.rdu2.redhat.com"
+
+- name: junos_command
+  junos_command:
+    commands:
+      - "show {{ item.cmd }}"
+  with_items:
+    - "{{ junos }}"
+  when: ansible_network_os == 'junos' and ansible_host == "an-vsrx-02.ansible.eng.rdu2.redhat.com"

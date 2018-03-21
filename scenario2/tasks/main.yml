@@ -1,0 +1,7 @@
+- name: Run operational commands
+  hosts: all
+  vars_files:
+    - "../defaults/main.yml"
+
+  tasks:
+    - include: cmd.yml

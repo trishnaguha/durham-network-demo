@@ -1,0 +1,18 @@
+- name: eos_ping
+  hosts: eos
+
+  tasks:
+      #- name: ios_ping
+      #ios_ping:
+      #dest: 10.8.38.1
+
+  - name: eos ping
+    eos_command:
+      commands:
+        - ping 10.10.38.1
+    register: result
+    failed_when: "'100% packet loss' in result.stdout[0]"
+
+  - debug:
+      msg: "Ping Successful" 
+    when: "'0% packet loss' in result.stdout[0]"
