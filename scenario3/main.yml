@@ -8,4 +8,4 @@
   - name: eos_config
     eos_config:
       diff_against: intended
-      intended_config: "{{ lookup('file', './templates/config.j2') }}"
+      intended_config: "{{ lookup('template', './templates/config.j2') }}"

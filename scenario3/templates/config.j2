@@ -1,26 +1,26 @@
-hostname "{{ hostname }}"
-ip domain-name "{{ domain_name }}"
+hostname {{ hostname }}
+ip domain-name {{ domain_name }}
 
-ip domain-lookup vrf "{{ vrf }}" source-interface "{{ source_int }}"
+ip domain-lookup vrf {{ vrf }} source-interface {{ source_int }}
 
-{% for server in {{ name_servers }} %}
-ip name-server {{ name_servers.server }}
+{% for ns in {{ name_servers }} %}
+ip name-server {{ ns.server }}
 {% endfor %}
 
 {% for intf in {{ config }} %}
-interface {{ config.interface }}
-  {% if config.description %}
-    description {{ config.description }}
-  {% if config.ipv4 %}
-    ip address {{ config.ipv4 }}
-  {% elif config.ipv4 == 'absent' %}
+interface {{ intf.interface }}
+  {% if intf.description %}
+    description {{ intf.description }}
+  {% if intf.ipv4 %}
+    ip address {{ intf.ipv4 }}
+  {% elif intf.ipv4 == 'absent' %}
     no ip address
-  {% if config.mode == 'layer2' %}
+  {% if intf.mode == 'layer2' %}
     switchport
-  {% elif config.mode == layer3' %}
+  {% elif intf.mode == layer3' %}
     no switchport
-  {% if config.enabled == 'no' %}
+  {% if intf.enabled == 'no' %}
     shutdown
-  {% eif config.enabled == 'yes' %}
+  {% elif intf.enabled == 'yes' %}
     no shutdown
 {% endfor %}
